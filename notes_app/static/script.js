@@ -1,3 +1,5 @@
+
+
 const themeSwitch = document.getElementById('theme-switch');
 
 const applyTheme = (theme) => {
@@ -18,6 +20,7 @@ if (themeSwitch) {
         applyTheme(newTheme);
     });
 }
+
 
 const searchInput = document.getElementById('search-input');
 const notesList = document.getElementById('notes-list');

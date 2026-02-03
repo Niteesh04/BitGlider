@@ -192,6 +192,7 @@ body.theme-dark textarea {
     margin: 0;
 }
 
+
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -231,6 +232,7 @@ body.theme-dark textarea {
 .toggle input:checked + .slider::before {
     transform: translateX(20px);
 }
+
 
 .hidden {
     display: none;
