@@ -192,6 +192,48 @@ body.theme-dark textarea {
     margin: 0;
 }
 
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle {
+    position: relative;
+    width: 42px;
+    height: 20px;
+    display: inline-block;
+}
+
+.toggle input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #444;
+    border: 2px solid #222;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background: #f4f4f4;
+    border: 2px solid #222;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.2s ease;
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+
 .hidden {
     display: none;
 }

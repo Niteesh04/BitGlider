@@ -11,6 +11,16 @@
     <div class="window">
         <header class="title-bar">
             <div class="title">🗂️ Retro Notes Manager</div>
+
+            <div class="theme-toggle">
+                <span>☀️</span>
+                <label class="toggle">
+                    <input type="checkbox" id="theme-switch" />
+                    <span class="slider"></span>
+                </label>
+                <span>🌙</span>
+            </div>
+
         </header>
         <main class="window-body">
             {% block content %}{% endblock %}

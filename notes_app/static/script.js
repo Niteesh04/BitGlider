@@ -1,3 +1,27 @@
+
+
+const themeSwitch = document.getElementById('theme-switch');
+
+const applyTheme = (theme) => {
+    document.body.classList.toggle('theme-dark', theme === 'dark');
+    document.body.classList.toggle('theme-light', theme !== 'dark');
+    if (themeSwitch) {
+        themeSwitch.checked = theme === 'dark';
+    }
+};
+
+const storedTheme = localStorage.getItem('retroTheme') || 'light';
+applyTheme(storedTheme);
+
+if (themeSwitch) {
+    themeSwitch.addEventListener('change', (event) => {
+        const newTheme = event.target.checked ? 'dark' : 'light';
+        localStorage.setItem('retroTheme', newTheme);
+        applyTheme(newTheme);
+    });
+}
+
+
 const searchInput = document.getElementById('search-input');
 const notesList = document.getElementById('notes-list');
 
