@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="layout">
+    <aside class="sidebar">
+        <div class="panel-title">Navigation</div>
+        <button class="nav-button" data-target="new-note">📝 New Note</button>
+        <button class="nav-button" data-target="search-notes">🔍 Search Notes</button>
+    </aside>
+
+    <section class="content">
+        <div class="panel" id="new-note">
+            <div class="panel-title">Create a New Note</div>
+            <form class="note-form" action="{{ url_for('save') }}" method="POST">
+                <label>
+                    Title
+                    <input type="text" name="title" placeholder="Enter note title" required />
+                </label>
+                <label>
+                    Content
+                    <textarea name="content" rows="8" placeholder="Write your note here..."></textarea>
+                </label>
+                <button type="submit" class="primary-button">💾 Save Note</button>
+            </form>
+        </div>
+
+        <div class="panel" id="search-notes">
+            <div class="panel-title">Search Notes</div>
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search by title or content..."
+                autocomplete="off"
+            />
+            <div class="notes-list" id="notes-list">
+                {% for note in notes %}
+                    <a class="note-item" href="{{ url_for('view_note', note_id=note.id) }}">
+                        <div class="note-title">{{ note.title }}</div>
+                        <div class="note-meta">Last modified: {{ note.last_modified }}</div>
+                    </a>
+                {% else %}
+                    <div class="empty-state">No notes yet. Create your first note!</div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
