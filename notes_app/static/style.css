@@ -1,0 +1,248 @@
+:root {
+    --bg: #c0c0c0;
+    --panel: #d9d9d9;
+    --text: #1a1a1a;
+    --shadow-light: #ffffff;
+    --shadow-dark: #808080;
+    --accent: #000080;
+    --button-face: #e0e0e0;
+    --danger: #b00020;
+}
+
+body.theme-dark {
+    --bg: #202124;
+    --panel: #2b2b2b;
+    --text: #f0f0f0;
+    --shadow-light: #3a3a3a;
+    --shadow-dark: #101010;
+    --accent: #00ff9d;
+    --button-face: #3a3a3a;
+    --danger: #ff6b6b;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "MS Sans Serif", "Lucida Console", monospace;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.window {
+    max-width: 1100px;
+    margin: 24px auto;
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    background: var(--panel);
+}
+
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: bold;
+}
+
+.window-body {
+    padding: 16px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 16px;
+}
+
+.sidebar {
+    background: var(--panel);
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    padding: 12px;
+}
+
+.panel {
+    background: var(--panel);
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.panel-title {
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.row-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button,
+button {
+    display: inline-block;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: left;
+    background: var(--button-face);
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-button:hover,
+button:hover {
+    filter: brightness(0.98);
+}
+
+.note-form label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 6px;
+    margin-top: 6px;
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    background: #fff;
+    color: #000;
+}
+
+body.theme-dark input[type="text"],
+body.theme-dark textarea {
+    background: #121212;
+    color: var(--text);
+}
+
+.primary-button {
+    background: var(--accent);
+    color: #fff;
+}
+
+.secondary-button {
+    background: #f4d03f;
+}
+
+.danger-button {
+    background: var(--danger);
+    color: #fff;
+}
+
+.notes-list {
+    max-height: 280px;
+    overflow-y: auto;
+    border: 2px inset var(--shadow-dark);
+    padding: 6px;
+    background: var(--bg);
+}
+
+.note-item {
+    display: block;
+    padding: 8px;
+    margin-bottom: 6px;
+    background: var(--panel);
+    border: 2px solid var(--shadow-dark);
+    box-shadow: inset 2px 2px var(--shadow-light), inset -2px -2px var(--shadow-dark);
+    text-decoration: none;
+    color: var(--text);
+}
+
+.note-title {
+    font-weight: bold;
+}
+
+.note-meta {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.empty-state {
+    padding: 12px;
+    font-style: italic;
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+.action-row {
+    display: flex;
+    gap: 12px;
+}
+
+.inline-form {
+    margin: 0;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle {
+    position: relative;
+    width: 42px;
+    height: 20px;
+    display: inline-block;
+}
+
+.toggle input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #444;
+    border: 2px solid #222;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background: #f4f4f4;
+    border: 2px solid #222;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.2s ease;
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-button,
+    button {
+        width: auto;
+    }
+}

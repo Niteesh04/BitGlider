@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="layout">
+    <aside class="sidebar">
+        <div class="panel-title">Navigation</div>
+        <a class="nav-button" href="{{ url_for('index') }}">📝 New Note</a>
+        <a class="nav-button" href="{{ url_for('index') }}#search-notes">🔍 Search Notes</a>
+    </aside>
+
+    <section class="content">
+        <div class="panel">
+            <div class="panel-title row-space">
+                <span>Viewing Note</span>
+                <form
+                    class="inline-form"
+                    action="{{ url_for('delete', note_id=note.id) }}"
+                    method="POST"
+                    onsubmit="return confirm('Delete this note permanently?');"
+                >
+                    <button type="submit" class="danger-button">🗑️ Delete</button>
+                </form>
+            </div>
+            <form class="note-form" action="{{ url_for('save') }}" method="POST">
+                <input type="hidden" name="note_id" value="{{ note.id }}" />
+                <label>
+                    Title
+                    <input type="text" name="title" value="{{ note.title }}" required />
+                </label>
+                <label>
+                    Content
+                    <textarea name="content" rows="10">{{ note.content }}</textarea>
+                </label>
+                <div class="meta-row">
+                    <div>Date Created: {{ note.date_created }}</div>
+                    <div>Last Modified: {{ note.last_modified }}</div>
+                </div>
+                <div class="action-row">
+                    <button type="submit" class="primary-button">💾 Save Changes</button>
+                    <button type="button" class="secondary-button" id="export-button">🔐 Export Note</button>
+                </div>
+            </form>
+            <form
+                id="export-form"
+                class="hidden"
+                action="{{ url_for('export', note_id=note.id) }}"
+                method="POST"
+            >
+                <input type="hidden" name="password" id="export-password" />
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}
